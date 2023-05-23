@@ -18,7 +18,7 @@ namespace RealEstateMvcApp.Models.Repository.Implementation
         }
         public Agent Get(string id)
         {
-            var x =09;
+            
             var agent = _context.AgentList
             .Where(c => c.IsDeleted == false)
             .Include(c => c.User)
