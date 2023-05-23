@@ -1,0 +1,129 @@
+@model IEnumerable<RealEstateMvcApp.Models.Dtos.PropertyDto>
+@{
+    ViewData["Title"] = "Property List";
+}    
+
+<div class="">
+    <div class="row">
+        <div class="col-md-2 border" style="min-height: 520px; padding: 0px; margin: 0px">
+             @await Html.PartialAsync("~/Views/User/Menu.cshtml") 
+            @* <a class="dropdown-item active" asp-action="Manager" asp-controller="User">Dashboard</a>
+            <a class="dropdown-item" asp-action="Add" asp-controller="Property">Create Property</a>
+            <a class="dropdown-item" asp-action="List" asp-controller="Property">Property List</a>
+            <a class="dropdown-item" asp-action="Add" asp-controller="Agent">Create Agent</a>
+            <a class="dropdown-item" asp-action="List" asp-controller="Agent">Agent List</a> *@
+            @* <a class="dropdown-item" asp-action="List" asp-controller="Manager">Manager List</a>
+            <a class="dropdown-item" asp-action="Add" asp-controller="Principal">Add Principal</a>
+            <a class="dropdown-item" asp-action="List" asp-controller="Principal">Principal List</a> *@
+        </div>
+        <div class="row col-md-10 pt-3">
+            <div class="col-md-1"></div>
+            <div class="col-md-10">
+                <span class="text-center"><h3>@ViewData["Title"]</h3></span>
+                @if(User.IsInRole("Manager"))
+                {
+                    <table class="table table-bordered table-striped table-responsive">
+                    <thead>
+                        <tr>
+                            <th>Sn</th>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>Location</th>
+                            <th>Transaction Type</th>
+                            <th>Price</th>
+                            <th>Status</th>
+                            <th>Details</th>
+                            <th>Edit</th>
+                            <th>Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                       @{
+                            int i = 1;
+                            foreach (var property in Model)
+                            {
+                                <tr>
+                                    <td>@i</td>
+                                    <td>@property.Name</td>
+                                    <td>@property.Description</td>
+                                    <td>@property.Location</td>
+                                    <td>@property.TransactionType</td>
+                                    <td>@property.Price</td>
+                                    <td>@property.Status</td>
+                                    
+                                    <td><a asp-action="Details" asp-controller="Property" asp-route-id="@property.Id">Details</a></td>
+                                     <td><a asp-action="Edit" asp-controller="Property" asp-route-id="@property.Id">Edit</a></td> 
+                                    <td><a asp-action="Delete" asp-controller="Property" asp-route-id="@property.Id">Remove</a></td>
+                                </tr>
+                                i++;
+                            }
+                       }
+                    </tbody>
+                    <div>
+
+                    </div>
+                </table>
+                 
+                }
+                else
+                {
+                <table class="table table-bordered table-striped table-responsive">
+                    <thead>
+                        <tr>
+                            <th>Sn</th>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>Location</th>
+                            <th>Transaction Type</th>
+                            <th>Price</th>
+                            <th>Status</th>
+                            <th>Details</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                       @{
+                            int i = 1;
+                            foreach (var property in Model)
+                            {
+                                <tr>
+                                    <td>@i</td>
+                                    <td>@property.Name</td>
+                                    <td>@property.Description</td>
+                                    <td>@property.Location</td>
+                                    <td>@property.TransactionType</td>
+                                    <td>@property.Price</td>
+                                    <td>@property.Status</td>
+                                    
+                                    <td><a asp-action="Details" asp-controller="Property" asp-route-id="@property.Id">Details</a></td>
+                                  
+                                </tr>
+                                i++;
+                            }
+                       }
+                    </tbody>
+                    <div>
+
+                    </div>
+                </table>
+                }
+                @if (User.IsInRole("Manager"))
+                {
+                    <li>
+                        <a asp-controller="User"  text asp-action="Manager">Back</a>
+                    </li>
+                }
+                else{
+                     <li>
+                        <a asp-controller="User"  text asp-action="Client">Back</a>
+                    </li>
+                }
+                
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+    </div>
+</div>
+
+        
+
+    

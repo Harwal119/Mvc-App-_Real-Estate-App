@@ -1,0 +1,102 @@
+@using RealEstateMvcApp.Models.Dtos
+@model PropertyDto
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Create Property";
+}
+<div class="">
+    <div class="row">
+        <div class="col-md-2 border" style="min-height: 520px; padding: 0px; margin: 0px">
+             @await Html.PartialAsync("~/Views/User/Menu.cshtml") 
+             @* <a class="dropdown-item active" asp-action="Manager" asp-controller="User">Dashboard</a> 
+            <a class="dropdown-item" asp-action="Add" asp-controller="Property">Create Property</a>
+            <a class="dropdown-item" asp-action="List" asp-controller="Property">Property List</a>
+            <a class="dropdown-item" asp-action="Add" asp-controller="Agent">Create Agent</a>
+            <a class="dropdown-item" asp-action="List" asp-controller="Agent">Agent List</a> *@
+            @* <a class="dropdown-item" asp-action="List" asp-controller="Role">Role List</a>
+            <a class="dropdown-item" asp-action="Add" asp-controller="Manager">Add Manager</a>
+            <a class="dropdown-item" asp-action="List" asp-controller="Manager">Manager List</a>
+            <a class="dropdown-item" asp-action="Add" asp-controller="Principal">Add Principal</a>
+            <a class="dropdown-item" asp-action="List" asp-controller="Principal">Principal List</a> *@
+        </div>
+        <div class="row col-md-10 pt-3">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <span class="text-center"><h3>@ViewData["Title"]</h3></span>
+                <form asp-action="Add" enctype="multipart/form-data">
+                    <div>
+                        <label asp-for="Name"></label>
+                        <input asp-for="Name" class="form-control" type="text" />
+                        <span asp-validation-for="Name"></span>
+                    </div>
+                    <div>
+                        <label asp-for="PrincipalId"></label>
+                        <select name="PrincipalId" class="form-control">
+                            <option value="">Choose principal</option>
+                            @foreach (var item in ViewBag.principal)
+                            {
+                                <option value="@item.Id">@item.Name</option>
+                            }
+                        </select>
+                    </div>
+                    <div>
+                        <label asp-for="Description"></label>
+                        <input asp-for="Description" class="form-control" type="text" />
+                        <span asp-validation-for="Description"></span>
+                    </div>
+                    <div>
+                        <label asp-for="Location"></label>
+                        <input asp-for="Location" class="form-control" type="Text" />
+                        <span asp-validation-for="Location"></span>
+                    </div>
+                    <div>
+                        <label asp-for="TransactionType"></label>
+                        @* <input asp-for="TransactionType" class="form-control" type="text" /> *@
+                        <select class="form-control" asp-for="TransactionType" name="TransactionType">
+                            <option value="2">Purchase</option>
+                            <option value="1">Rent</option>
+                        </select>
+                        <span asp-validation-for="TransactionType"></span>
+                    </div><div>
+                        <label asp-for="Price"></label>
+                        <input asp-for="Price" class="form-control" type="Number" />
+                        <span asp-validation-for="Price"></span>
+                    </div>
+                    <div>
+                        <label asp-for="Status"></label>
+                        <select class="form-control" asp-for="TransactionType" name="Status">
+                            <option value="1">AvailableForRent</option>
+                            <option value="2">NotAvailableForRent</option>
+                            <option value="3">AvailableForPurchase</option>
+                            <option value="4">NotAvailableForPurchase</option>
+                        </select>
+                        <div>
+                        <label asp-for="Photo"></label>
+                        <input asp-for="Photo" class="form-control" type="file" />
+                        <span asp-validation-for="Photo" class="text-danger"></span>
+                    </div>
+                    <div>
+                        <label asp-for="PropertyDocument"></label>
+                        <input asp-for="PropertyDocument" class="form-control" type="file" />
+                        <span asp-validation-for="PropertyDocument" class="text-danger"></span>
+                    </div>
+                        @* <input asp-for="Status" class="form-control" type="Text" /> *@
+                        <span asp-validation-for="Status"></span>
+                    </div>
+                    <div class="mt-2 text-end">
+                        <button type="submit" class="btn btn-primary" style="width: 30%">Create Property</button>
+                    </div>
+                    <li>
+                        <a asp-controller="User"  text asp-action="Manager">Back</a>
+                    </li>
+                </form>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

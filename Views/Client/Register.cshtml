@@ -1,0 +1,65 @@
+@model RealEstateMvcApp.Models.Dtos.CreateClientRequestModel;
+@{
+    var massage = TempData["message"] ?? "";
+}
+<div>
+    <div class="text-center">
+        <h2>Registration Form </h2>
+    </div>
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <div>@massage</div>
+            <form asp-action="Register" enctype="multipart/form-data">
+                <div>
+                    <label asp-for="Name"></label>
+                    <input class="form-control" type="text" asp-for="Name" placeholder="Alexandra">
+                    <span asp-validation-for="Name"></span>
+                </div>
+                <div>
+                    <label asp-for="Email"></label>
+                    <input class="form-control" type="text" asp-for="Email" placeholder="user@gmail.com">
+                    <span asp-validation-for="Email"></span>
+                </div>
+                <div>
+                    <label asp-for="PassWord"></label>
+                    <input class="form-control" type="text" asp-for="PassWord" >
+                    <span asp-validation-for="PassWord"></span>
+                </div>
+                <div>
+                    <label asp-for="PhoneNumber"></label>
+                    <input class="form-control" type="text" asp-for="PhoneNumber" placeholder="+234">
+                    <span asp-validation-for="PhoneNumber"></span>
+                </div>
+                <div>
+                    <label asp-for="Address"></label>
+                    <input class="form-control" type="text" asp-for="Address" placeholder="bruno">
+                    <span asp-validation-for="Address"></span>
+                </div>
+                <div>
+                    <label asp-for="Picture"></label>
+                    <input class="form-control" type="file" asp-for="Picture" placeholder="bruno">
+                    <span asp-validation-for="Picture"></span>
+                </div>
+                
+                <div class="background">
+                    <div class="shape"></div>
+                    <div class="shape"></div>
+                    <div class="shape"></div>
+                </div>
+                <div class="text-end pt-2">
+                    <input class="btn btn-primary" type="submit" value="Submit" />
+                </div>
+            </form>
+            <li>
+                <a asp-controller="Home"  text asp-action="">Back</a>
+            </li>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+</div>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

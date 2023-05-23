@@ -1,0 +1,42 @@
+@using RealEstateMvcApp.Models.Enums
+@model RealEstateMvcApp.Models.Dtos.PropertyDto
+@{
+    @* ViewData["ManagerName"] = @Model.Name; *@
+}
+<h2>
+    @* @ViewData["ManagerName"] *@
+</h2>
+
+<div>
+
+    @* <h4>Id : @Model.Id</h4> *@
+    <h4>Name : @Model.Name</h4>
+    <h4>Location : @Model.Location</h4>
+    <h4>Description : @Model.Description</h4>
+    <h4>TransactionType:@Model.TransactionType </h4>
+    <h4>Price:@Model.Price </h4>
+    <h4>AgencyFee:@Model.AgencyFee </h4>
+    
+    @if (Model.TransactionType == TransactionType.Rent)
+    {
+        <h4>AgreementFee:@Model.AgreementFee </h4>
+        <h4>CautionFee:@Model.CautionFee </h4>
+        <h4>Total:@Model.Total </h4>
+    }
+    
+    <h4>Status:@Model.Status </h4>
+    <li>
+        <b><a asp-controller="Transaction"  text asp-action="Create" asp-route-id="@Model.Id" >Rent</a><br></b>
+    </li>
+    <li>
+        <b><a asp-controller="Transaction"  text asp-action="Purchasing" asp-route-id="@Model.Id" >Purchase</a><br></b>
+    </li>
+    <li>
+        <b><a asp-controller="Property"  text asp-action="List">Back</a><br></b>
+    </li>
+</div>
+<style>
+    div{
+        color: cornflowerblue;
+    }
+</style>

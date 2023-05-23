@@ -1,0 +1,23 @@
+@model RealEstateMvcApp.Models.Dtos.PrincipalDto
+@{
+    @* ViewData["ManagerName"] = @Model.Name; *@
+}
+<h2>
+    @* @ViewData["ManagerName"] *@
+</h2>
+
+<div>
+    @* <h4>Id : @Model.Id</h4><br><br> *@
+    <h4>Name : @Model.Name</h4><br><br>
+    <h4>Email : @Model.Email</h4><br><br>
+    <h4>Phone Number:@Model.PhoneNumber </h4>
+    <h4>Address:@Model.Address </h4>
+    <li>
+        <b><a asp-controller="Principal" text asp-action="List">Back</a><br></b>
+    </li>
+</div>
+<style>
+    div{
+        color: cornflowerblue;
+    }
+</style>

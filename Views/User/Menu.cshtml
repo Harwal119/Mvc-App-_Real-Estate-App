@@ -1,0 +1,39 @@
+@using System.Security.Claims
+@if(User.IsInRole("Super Admin"))
+{
+    <a class="dropdown-item active" asp-action="Super" asp-controller="User">Dashboard</a>
+    <a class="dropdown-item" asp-action="Add" asp-controller="Role">Create Roles</a>
+    <a class="dropdown-item" asp-action="List" asp-controller="Role">Role List</a>
+    <a class="dropdown-item" asp-action="Add" asp-controller="Manager">Add Manager</a>
+    <a class="dropdown-item" asp-action="List" asp-controller="Manager">Manager List</a>
+    <a class="dropdown-item" asp-action="Add" asp-controller="Principal">Add Principal</a>
+    <a class="dropdown-item" asp-action="List" asp-controller="Principal">Principal List</a>
+}
+else if(User.IsInRole("Manager"))
+{
+    <a class="dropdown-item active" asp-action="Manager" asp-controller="User">Dashboard</a>
+    <a class="dropdown-item" asp-action="Add" asp-controller="Property">Create Property</a>
+    <a class="dropdown-item" asp-action="List" asp-controller="Property">Property List</a>
+    <a class="dropdown-item" asp-action="Add" asp-controller="Agent">Create Agent</a>
+    <a class="dropdown-item" asp-action="List" asp-controller="Agent">Agent List</a>
+    <a class="dropdown-item" asp-action="List" asp-controller="Client">Client List</a>
+    <a class="dropdown-item" asp-action="ListA" asp-controller="Property">All Property</a>
+}
+else if(User.IsInRole("Agent"))
+{
+    <a class="dropdown-item" asp-action="List" asp-controller="Property">Property List</a>
+}
+else if(User.IsInRole("Principal"))
+{
+    <a class="dropdown-item" asp-action="List" asp-controller="Property">Property List</a>
+}
+else if(User.IsInRole("Client"))
+{
+    <a class="dropdown-item" asp-action="List" asp-controller="Property">Property List</a>
+    <a class="dropdown-item" asp-action="FundWallet" asp-controller="Wallet" asp-route-id='@User.FindFirst(ClaimTypes.NameIdentifier)?.Value'>FundWallet</a>
+     <a class="dropdown-item" asp-action="Get" asp-controller="Wallet" asp-route-id='@User.FindFirst(ClaimTypes.NameIdentifier)?.Value'>View Balance</a>
+     <a class="dropdown-item" asp-action="Details" asp-controller="Client" asp-route-id='@User.FindFirst(ClaimTypes.NameIdentifier)?.Value'>View Profile</a>
+}
+else{
+
+}

@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "ir5QZI5Ef5Xl5JveG4+gsh6v6x1M/VkDXNIIe7W2HkETkKt0SxOHgr32cbWsPwU2WVtrWM3cY89sKlTDr8ur2w==",
+  "success": false,
+  "projectFilePath": "C:\\Users\\USER\\Desktop\\RealEstateMvcApp\\RealEstateMvcApp.csproj",
+  "expectedPackageFiles": [],
+  "logs": [
+    {
+      "code": "NU1301",
+      "level": "Error",
+      "message": "Unable to load the service index for source https://api.nuget.org/v3/index.json.",
+      "libraryId": "Microsoft.EntityFrameworkCore.Tools"
+    }
+  ]
+}

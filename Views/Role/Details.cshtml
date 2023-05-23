@@ -1,0 +1,21 @@
+@model RealEstateMvcApp.Models.Dtos.RoleDto
+@{
+    @* ViewData["ManagerName"] = @Model.Name; *@
+}
+<h2>
+    @* @ViewData["ManagerName"] *@
+</h2>
+
+<div>
+    @* <h4>Id : @Model.Id</h4><br><br> *@
+    <h4>Name : @Model.Name</h4><br><br>
+    <h4>Email : @Model.Description</h4><br><br>
+    <li>
+        <a asp-controller="Role" text asp-action="List">Back</a>
+    </li>
+</div>
+<style>
+    div{
+        color: cornflowerblue;
+    }
+</style>

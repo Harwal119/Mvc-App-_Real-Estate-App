@@ -1,0 +1,67 @@
+@model IEnumerable<RealEstateMvcApp.Models.Dtos.AgentDto>
+@{
+    ViewData["Title"] = "Agent List";
+}
+
+<div class="">
+    <div class="row">
+        <div class="col-md-2 border" style="min-height: 520px; padding: 0px; margin: 0px">
+             @await Html.PartialAsync("~/Views/User/Menu.cshtml") 
+            @* <a class="dropdown-item active" asp-action="Manager" asp-controller="User">Dashboard</a>
+            <a class="dropdown-item" asp-action="Add" asp-controller="Property">Create Property</a>
+            <a class="dropdown-item" asp-action="List" asp-controller="Property">Property List</a>
+            <a class="dropdown-item" asp-action="Add" asp-controller="Agent">Create Agent</a>
+            <a class="dropdown-item" asp-action="List" asp-controller="Agent">Agent List</a> *@
+            @* <a class="dropdown-item" asp-action="List" asp-controller="Manager">Manager List</a>
+            <a class="dropdown-item" asp-action="Add" asp-controller="Principal">Add Principal</a>
+            <a class="dropdown-item" asp-action="List" asp-controller="Principal">Principal List</a> *@
+        </div>
+        <div class="row col-md-10 pt-3">
+            <div class="col-md-1"></div>
+            <div class="col-md-10">
+                <span class="text-center"><h3>@ViewData["Title"]</h3></span>
+                <table class="table table-bordered table-striped table-responsive">
+                    <thead>
+                        <tr>
+                            <th>Sn</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>PhoneNumber</th>
+                            <th>Address</th>
+                            <th>Details</th>
+                            <th>Edit</th>
+                            <th>Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                       @{
+                            int i = 1;
+                            foreach (var agent in Model)
+                            {
+                                <tr>
+                                    <td>@i</td>
+                                    <td>@agent.Name</td>
+                                    <td>@agent.Email</td>
+                                    <td>@agent.PhoneNumber</td>
+                                    <td>@agent.Address</td>
+                                    
+                                    <td><a asp-action="Details" asp-controller="Agent" asp-route-id="@agent.Id">Details</a></td>
+                                    <td><a asp-action="Edit" asp-controller="Agent" asp-route-id="@agent.Id">Edit</a></td>
+                                    <td><a asp-action="Delete" asp-controller="Agent" asp-route-id="@agent.Id">Remove</a></td>
+                                </tr>
+                                i++;
+                            }
+                       }
+                    </tbody>
+                    <div>
+
+                    </div>
+                </table>
+                <li>
+                        <a asp-controller="User"  text asp-action="Manager">Back</a>
+                    </li>
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+    </div>
+</div>

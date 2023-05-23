@@ -1,0 +1,58 @@
+@model IEnumerable<RealEstateMvcApp.Models.Dtos.RoleDto>
+@{
+    ViewData["Title"] = "Role List";
+}
+
+<div class="">
+    <div class="row">
+        <div class="col-md-2 border" style="min-height: 520px; padding: 0px; margin: 0px">
+            @* @await Html.PartialAsync("~/Views/User/Menu.cshtml") *@
+            <a class="dropdown-item active" asp-action="Super" asp-controller="User">Dashboard</a>
+            <a class="dropdown-item" asp-action="Add" asp-controller="Role">Create Roles</a>
+            <a class="dropdown-item" asp-action="List" asp-controller="Role">Role List</a>
+            <a class="dropdown-item" asp-action="Add" asp-controller="Manager">Add Manager</a>
+            <a class="dropdown-item" asp-action="List" asp-controller="Manager">Manager List</a>
+            <a class="dropdown-item" asp-action="Add" asp-controller="Principal">Add Principal</a>
+            <a class="dropdown-item" asp-action="List" asp-controller="Principal">Principal List</a>
+        </div>
+        <div class="row col-md-10 pt-3">
+            <div class="col-md-1"></div>
+            <div class="col-md-10">
+                <span class="text-center"><h3>@ViewData["Title"]</h3></span>
+                <table class="table table-bordered table-striped table-responsive">
+                    <thead>
+                        <tr>
+                            <th>Sn</th>
+                            <th>RoleName</th>
+                            <th>Description</th>
+                            <th>Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                       @{
+                            int i = 1;
+                            foreach (var role in Model)
+                            {
+                                <tr>
+                                    <td>@i</td>
+                                    <td>@role.Name</td>
+                                    <td>@role.Description</td>
+                                    
+                                    <td><a asp-action="Delete" asp-controller="Role" asp-route-id="@role.Id">Remove</a></td>
+                                </tr>
+                                i++;
+                            }
+                       }
+                    </tbody>
+                    <div>
+
+                    </div>
+                </table>
+                <li>
+                        <a asp-controller="User"  text asp-action="Super">Back</a>
+                    </li>
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+    </div>
+</div>

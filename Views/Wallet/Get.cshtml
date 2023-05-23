@@ -1,0 +1,21 @@
+@model RealEstateMvcApp.Models.Entities.Wallet
+@{
+    @* ViewData["ManagerName"] = @Model.Name; *@
+}
+<h2>
+    @* @ViewData["ManagerName"] *@
+</h2>
+
+<div>
+    @* <h4>Id : @Model.Id</h4><br><br> *@
+    <h4>Balance : @Model.Balance</h4><br><br>
+    @* <td><a asp-action="Get" asp-controller="Wallet" asp-route-id="@Model.Id">View Balance</a></td> *@
+    <li>
+        <b><a asp-controller="Principal" text asp-action="List">Back</a><br></b>
+    </li>
+</div>
+<style>
+    div{
+        color: cornflowerblue;
+    }
+</style>
